@@ -8,4 +8,13 @@ Array.prototype.myMap = function(callback){
   return result;
 }
 
-// module.exports = Array.prototype.myMap();
+Array.prototype.myEvery = function (callback) {
+
+  for(var i = 0; i < this.length; i++){
+      if(!callback(this[i])){
+        return false;
+      }
+  }
+  
+  return true;
+};

@@ -25,3 +25,17 @@ describe('implement the map function for arrays', function(){
     })).to.deep.equal([1,4,9]);
   });
 });
+
+describe('implement the every function for arrays', function(){
+  it('should return boolean value after running a function', function(){
+    expect([1,2,6].myEvery(function(item){
+      return item > 5;
+    })).to.equal(false);
+    expect([7,9,6].myEvery(function(item){
+      return item > 5;
+    })).to.equal(true);
+    expect([7,8,5].myEvery(function(item){
+      return item > 5;
+    })).to.equal(false);
+  });
+});
