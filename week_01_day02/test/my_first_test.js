@@ -57,4 +57,18 @@ describe('this', function(){
     }
     expect(returnThis()).to.be.undefined;
   });
+
+  it('should not be affected by mode when this is used, this refers to the object when as method invocation', () => {
+    var bankAccount = {
+      accountHolder: 'Instructor X',
+        checkingBalance: 100,
+        savingsBalance: 200,
+        totalBalance: function() {
+          return this.checkingBalance + this.savingsBalance
+        }
+    };
+
+    expect(bankAccount.totalBalance()).to.equal(300);
+  });
+
 })
