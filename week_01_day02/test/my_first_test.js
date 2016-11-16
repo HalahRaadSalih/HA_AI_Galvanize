@@ -1,5 +1,7 @@
 var expect = require('chai').expect;
 var app = require('../src/app.js');
+var myThis = require('../src/myThis.js');
+
 require('../src/map.js');
 
 describe('Array', function() {
@@ -39,3 +41,9 @@ describe('implement the every function for arrays', function(){
     })).to.equal(false);
   });
 });
+
+describe('this', function(){
+  it('should refer to global object when used in functions', function(){
+    expect(myThis()).to.equal(global);
+  });
+})
