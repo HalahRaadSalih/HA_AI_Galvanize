@@ -1,5 +1,12 @@
-var myThis = function(){
+var myGlobalThis = function(){
+  return this;
+}
+var myUndefinedThis = function(){
+  'use strict';
   return this;
 }
 
-module.exports = myThis;
+module.exports = {
+  myGlobalThis : myGlobalThis,
+  myUndefinedThis: myUndefinedThis
+};

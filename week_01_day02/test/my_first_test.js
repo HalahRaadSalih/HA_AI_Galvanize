@@ -44,6 +44,17 @@ describe('implement the every function for arrays', function(){
 
 describe('this', function(){
   it('should refer to global object when used in functions', function(){
-    expect(myThis()).to.equal(global);
+    function returnThis(){
+      return this;
+    }
+    expect(returnThis()).to.equal(global);
+  });
+
+  it('should be undefined when \'use strict\' is used', function(){
+    function returnThis(){
+      'use strict';
+      return this;
+    }
+    expect(returnThis()).to.be.undefined;
   });
 })
