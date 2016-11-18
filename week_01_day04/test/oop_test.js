@@ -34,4 +34,49 @@ describe('OOP with javascript', function(){
     var manager = new Manager('Jerimy', 'Hiltner', 'Partner Relation Manager','12345678');
     expect(manager).to.have.property('employees');
   });
+
+
+});
+
+describe('Manager Constructor', function(){
+  var manager = new Manager('Jerimy', 'Hiltner', 'Partner Relation Manager','12345678');
+  var halah = new Employee('Halah', 'Al-Shaikhly', 'Enterprise Instructor', '12345678');
+
+  it('should have add employees method', function(){
+    expect(manager).to.respondsTo('addEmployee');
+  });
+
+  it('should have a list of employees that report to a manager', function(){
+    manager.addEmployee(halah);
+    expect(manager.employees).to.deep.equal([{
+      firstName: 'Halah',
+      lastName: 'Al-Shaikhly',
+      title: 'Enterprise Instructor',
+      id:'12345678'}]);
+  });
+
+  it('should have a unique list of employees that report to manager', function(){
+    manager.addEmployee(halah);
+    manager.addEmployee(halah);
+    manager.addEmployee(halah);
+
+    var sarah = new Employee('Sarah', 'Al-Shanmy', 'German Language Instructor','01234t646');
+    manager.addEmployee(sarah);
+
+    console.log(manager.employees);
+
+    expect(manager.employees).to.deep.equal([
+      {
+        firstName: 'Halah',
+        lastName: 'Al-Shaikhly',
+        title: 'Enterprise Instructor',
+        id:'12345678'},
+        {
+          firstName: 'Sarah',
+          lastName: 'Al-Shanmy',
+          title: 'German Language Instructor',
+          id:'01234t646'}
+        ]);
+  });
+
 });
